@@ -6,7 +6,8 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@country/*": ["src/app/country/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@envs/*": ["src/environments/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

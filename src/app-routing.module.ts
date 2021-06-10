@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ListByCountryComponent } from '@country/pages/list-by-country/list-by-country.component';
 
 const routes: Routes = [
@@ -10,9 +10,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [],
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    }),
+  ],
   exports: [],
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}
