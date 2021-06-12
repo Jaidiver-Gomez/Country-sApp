@@ -18,13 +18,16 @@
     </div>
   </div>
 
-  <ul *ngIf="term && filter!=='region'" class="list-group">
-    <li *ngFor="let country of suggestionCountries"class="list-group-item list-group-item-action">
-      <a (click)="resetFilters.onResetFilters()" [routerLink]="['/country-details', country.alpha2Code,{country:country | json }]"
-         class="nav-link">{{country.name}}</a>
+  <ul *ngIf="term && filter!=='region'  " class="list-group">
+    <li *ngFor="let country of suggestionCountries" class="list-group-item list-group-item-action">
+      <a (click)="resetFilters.onResetFilters()"
+         [routerLink]="['/country-details', country.alpha2Code,{country:country | json }]"
+         class="nav-link">
+        <img [alt]="'flag of '+ country.name" [src]="country.flag" class="small-flag"> {{country.capital}}, {{country.name}}
+      </a>
     </li>
     <li class="list-group-item list-group-item-action">
-      <a class="nav-link" (click)="search(term)">Search "{{term}}"</a>
+      <a (click)="search(term)" class="nav-link">Search "{{term}}"</a>
     </li>
   </ul>
 </div>

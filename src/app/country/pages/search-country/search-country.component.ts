@@ -48,6 +48,7 @@ export class SearchCountryComponent implements OnInit, OnDestroy {
     this.countrySvc.filterCountry(this.filter, term).subscribe(
       (countries) => {
         this.countries = countries;
+        this.term = '';
       },
       () => {
         this.countries = [];
