@@ -1,0 +1,40 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h1>By {{filter | titlecase}} {{regionSelected| titlecase}}</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <app-country-input (onDebounce)="suggestions($event)" (onSearch)="search( $event )"
+                         *ngIf="filter !== 'region'; else regionFilter"
+                         [resetInput]="onResetInput" placeholder="Search {{filter}}..."></app-country-input>
+      <ng-template #regionFilter>
+        <form [formGroup]="form" class="col gap-2 btn-group">
+          <label *ngFor="let region of regions" [ngClass]="regionSelected === region? 'btn-primary' : 'btn-secondary'"
+                 class="btn">
+            <input [value]="region" class="btn-check" formControlName="region" name="region" type="radio">{{region}}
+          </label>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+
+  <ul *ngIf="term" class="list-group">
+    <li *ngFor="let country of suggestionCountries"class="list-group-item list-group-item-action">
+      <a (click)="resetFilters.onResetFilters()" [routerLink]="['/country-details', country.alpha2Code,{country:country | json }]"
+         class="nav-link">{{country.name}}</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <a class="nav-link" (click)="search(term)">Search "{{term}}"</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="hasError" class="alert alert-danger mt-5">
+  Nothing was found with the term {{ term }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

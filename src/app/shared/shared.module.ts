@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const components = [
-  SidebarComponent,
-];
+const components = [SidebarComponent];
 
 @NgModule({
-  declarations: [
-    ...components,
-  ],
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    ...components,
-  ],
+  declarations: [SidebarComponent, ...components],
+  imports: [CommonModule, ReactiveFormsModule],
+  exports: [...components]
 })
-export class SharedModule {
-}
+export class SharedModule {}

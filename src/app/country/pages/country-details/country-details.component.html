@@ -1,1 +1,92 @@
-<p>country-details works!</p>
+<ng-template #loading>
+  <div class="alert alert-info">Wait please</div>
+</ng-template>
+
+<div *ngIf="country; else loading" class="col">
+  <div class="col-12">
+    <h1>Country: <small>{{country.name}}</small></h1>
+    <strong *ngIf="country.name !== country.nativeName">/{{country.nativeName}}</strong>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <img [alt]="'flag of '+country.name " [src]="country.flag" class="img-thumbnail"/>
+    </div>
+    <div class="col">
+      <h3>Information</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Capital  </strong>{{country.capital}}
+        </li>
+        <li class="list-group-item">
+          <strong>Population </strong>{{country.population|number}}
+        </li>
+        <li class="list-group-item">
+          <strong>Numeric code </strong>{{country.numericCode}}
+        </li>
+        <li class="list-group-item">
+          <strong>Alpha3 code </strong>{{country.alpha3Code}}
+        </li>
+        <li class="list-group-item">
+          <strong>Region-Subregion </strong>{{country.region}} {{country.subregion}}
+        </li>
+        <li class="list-group-item" >
+          <strong>Lat-Lng </strong>
+          <div class="col">
+            <span *ngFor="let coordinate of country.latlng" class="badge bg-primary mr-1">
+             {{coordinate}}
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <strong>Demonyn </strong>{{country.demonym}}
+        </li>
+        <li class="list-group-item">
+          <strong>Area (sq km) </strong>{{country.area}}
+        </li>
+        <li class="list-group-item">
+          <strong>Borders </strong>
+          <div class="col">
+            <span *ngFor="let border of country.borders" class="badge bg-primary mr-1">
+             {{border| uppercase}}
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <strong>Calling codes </strong>
+          <div class="col">
+            <span *ngFor="let codes of country.callingCodes" class="badge bg-primary mr-1">
+             +{{codes}}
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <strong>Currencies </strong>
+          <div *ngFor="let currence of country.currencies" class="col">
+            <span *ngFor="let item of currence|keyvalue" class="badge bg-primary mr-1">
+              <strong>{{item.key| uppercase}}: </strong>{{item.value}}
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <strong>Languages </strong>
+          <div *ngFor="let language of country.languages" class="col">
+            <span *ngFor="let item of language|keyvalue" class="badge bg-primary mr-1">
+              <strong>{{item.key| uppercase}}: </strong>{{item.value}}
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h1>Translations</h1>
+  <div class="row mb-5">
+    <div class="col">
+      <span *ngFor="let item of country.translations | keyvalue"
+            class="badge bg-primary mr-1"><strong>{{item.key | uppercase}} : </strong>{{item.value}}</span>
+    </div>
+  </div>
+
+</div>

@@ -1,26 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListByCapitalComponent } from './pages/list-by-capital/list-by-capital.component';
-import { ListByCountryComponent } from './pages/list-by-country/list-by-country.component';
-import { ListByRegionComponent } from './pages/list-by-region/list-by-region.component';
 import { CountryDetailsComponent } from './pages/country-details/country-details.component';
+import { CountryInputComponent } from './components/country-input/country-input.component';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { RouterModule } from '@angular/router';
+import { SearchCountryComponent } from './pages/search-country/search-country.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-const components = [
-  ListByCapitalComponent,
-  ListByCountryComponent,
-  ListByRegionComponent,
-  CountryDetailsComponent,
-];
+const components = [CountryDetailsComponent];
 
 @NgModule({
   declarations: [
+    CountryInputComponent,
+    CountryTableComponent,
     ...components,
+    SearchCountryComponent
   ],
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    ...components,
-  ],
+  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule, ReactiveFormsModule],
+  exports: [...components, CountryInputComponent]
 })
-export class CountryModule { }
+export class CountryModule {}

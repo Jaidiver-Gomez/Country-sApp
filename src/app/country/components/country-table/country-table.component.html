@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th> #</th>
+    <th>Flag</th>
+    <th>Capital-Name</th>
+    <th>Region-Subregion</th>
+    <th>Area (sq km) </th>
+    <th>Population</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let country of countries; let i = index" class="animate__animated animate__fadeIn animate__faster">
+    <td> {{ i + 1 }} </td>
+    <td>
+      <img [alt]="'flag of '+ country.name" [src]="country.flag" class="small-flag">
+    </td>
+    <td> {{ country.capital }}, {{ country.name }}</td>
+    <td>{{country.region}}, {{country.subregion}}</td>
+    <td>{{ country.area | number }}</td>
+    <td>{{ country.population | number }}</td>
+    <td>
+      <a [routerLink]="['/country-details', country.alpha2Code,{country:country | json }]">See more...</a>
+    </td>
+  </tr>
+  </tbody>
+</table>

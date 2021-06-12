@@ -18,6 +18,7 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         // AirBnB Styleguide rules
+        //TODO: Verificar si es necesario
         "airbnb-typescript/base"
       ],
       "rules": {

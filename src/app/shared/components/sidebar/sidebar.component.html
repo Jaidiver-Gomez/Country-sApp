@@ -1,1 +1,9 @@
-<p>sidebar works!</p>
+<form [formGroup]="form" class="row gap-2 btn-group">
+  <label [ngClass]="filter === 'name' ? 'btn-primary' : 'btn-secondary'" class="btn">
+    <input class="btn-check" formControlName="filter" name="filter" type="radio" value="name">Country</label>
+  <label [ngClass]="filter === 'capital'? 'btn-primary' : 'btn-secondary'" class="btn">
+    <input class="btn-check" formControlName="filter" name="filter" type="radio" value="capital">Capital</label>
+  <label [ngClass]="filter === 'region'? 'btn-primary' : 'btn-secondary'" class="btn">
+    <input class="btn-check" formControlName="filter" name="filter" type="radio" value="region">Region</label>
+</form>
+
